@@ -3,8 +3,12 @@ const Category = require("../models/Category")
 function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
+
 exports.createCategory = async (req, res) => {
+  console.log(req.body);
+  console.log("hello")
   try {
+
     const { name, description } = req.body
     if (!name) {
       return res
