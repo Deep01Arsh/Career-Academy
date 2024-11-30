@@ -43,14 +43,14 @@ function Navbar() {
 
   return (
     <div
-      className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700 ${
+      className={`flex h-14 items-center justify-center  ${
         location.pathname !== "/" ? "bg-richblack-800" : ""
       } transition-all duration-200`}
     >
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <h1 className="text-xl font-bold">CareerAcademy</h1>
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
@@ -62,8 +62,8 @@ function Navbar() {
                     <div
                       className={`group relative flex cursor-pointer items-center gap-1 ${
                         matchRoute("/catalog/:catalogName")
-                          ? "text-yellow-25"
-                          : "text-richblack-25"
+                          ? "text-blue-25"
+                          : "text-richblack-800"
                       }`}
                     >
                       <p>{link.title}</p>
@@ -102,8 +102,8 @@ function Navbar() {
                     <p
                       className={`${
                         matchRoute(link?.path)
-                          ? "text-yellow-25"
-                          : "text-richblack-25"
+                        ? "text-blue-100"
+                          : "text-richblack-800"
                       }`}
                     >
                       {link.title}
@@ -128,14 +128,14 @@ function Navbar() {
           )}
           {token === null && (
             <Link to="/login">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-white">
                 Log in
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/signup">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-white">
                 Sign up
               </button>
             </Link>
