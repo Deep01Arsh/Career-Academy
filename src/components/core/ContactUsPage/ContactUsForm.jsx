@@ -56,7 +56,7 @@ const ContactUsForm = () => {
             name="firstname"
             id="firstname"
             placeholder="Enter first name"
-            className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             {...register("firstname", { required: true })}
           />
           {errors.firstname && (
@@ -74,7 +74,7 @@ const ContactUsForm = () => {
             name="lastname"
             id="lastname"
             placeholder="Enter last name"
-            className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             {...register("lastname")}
           />
         </div>
@@ -89,7 +89,7 @@ const ContactUsForm = () => {
           name="email"
           id="email"
           placeholder="Enter email address"
-          className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+          className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
           {...register("email", { required: true })}
         />
         {errors.email && (
@@ -109,7 +109,7 @@ const ContactUsForm = () => {
             <select
               name="countrycode"
               id="countrycode"
-              className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               {...register("countrycode", { required: true })}
             >
               {CountryCode.map((ele, i) => {
@@ -127,7 +127,7 @@ const ContactUsForm = () => {
               name="phonenumber"
               id="phonenumber"
               placeholder="12345 67890"
-              className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               {...register("phoneNo", {
                 required: {
                   value: true,
@@ -156,7 +156,7 @@ const ContactUsForm = () => {
           cols="30"
           rows="7"
           placeholder="Enter your message here"
-          className="bg-white border border-gray-300 text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+          className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
           {...register("message", { required: true })}
         />
         {errors.message && (
