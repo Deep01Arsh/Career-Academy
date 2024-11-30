@@ -44,7 +44,7 @@ function Navbar() {
   return (
     <div
       className={`flex h-14 items-center justify-center  ${
-        location.pathname !== "/" ? "bg-richblack-800" : ""
+        location.pathname !== "/" ? "bg-white" : ""
       } transition-all duration-200`}
     >
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
