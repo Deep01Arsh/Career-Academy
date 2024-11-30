@@ -32,10 +32,11 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="mt-6 flex w-full flex-col gap-y-4"
+      className="mt-6 flex w-full flex-col gap-y-6 bg-white p-6 rounded-lg shadow-lg"
     >
+      {/* Email Field */}
       <label className="w-full">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
           Email Address <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -45,11 +46,13 @@ function LoginForm() {
           value={email}
           onChange={handleOnChange}
           placeholder="Enter email address"
-          className="form-style w-full"
+          className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black"
         />
       </label>
-      <label className="relative">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+
+      {/* Password Field */}
+      <label className="relative w-full">
+        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
           Password <sup className="text-pink-200">*</sup>
         </p>
         <input
@@ -59,27 +62,29 @@ function LoginForm() {
           value={password}
           onChange={handleOnChange}
           placeholder="Enter Password"
-          className="form-style w-full !pr-10"
+          className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black !pr-10"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}
           className="absolute right-3 top-[38px] z-[10] cursor-pointer"
         >
           {showPassword ? (
-            <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+            <AiOutlineEyeInvisible fontSize={24} fill="#000" />
           ) : (
-            <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+            <AiOutlineEye fontSize={24} fill="#000" />
           )}
         </span>
         <Link to="/forgot-password">
-          <p className="mt-1 ml-auto max-w-max text-xs text-blue-100">
-            Forgot Password
+          <p className="mt-1 ml-auto max-w-max text-xs text-blue-100 hover:text-blue-300">
+            Forgot Password?
           </p>
         </Link>
       </label>
+
+      {/* Submit Button */}
       <button
         type="submit"
-        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+        className="mt-6 py-3 px-6 text-white bg-black border-2 border-black rounded-md font-semibold hover:bg-white hover:text-black hover:border-black transition"
       >
         Sign In
       </button>
