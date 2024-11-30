@@ -82,14 +82,15 @@ function SignupForm() {
   ]
 
   return (
-    <div>
+    <div className="bg-white p-6 rounded-lg shadow-lg">
       {/* Tab */}
       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+
       {/* Form */}
-      <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
+      <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-6">
         <div className="flex gap-x-4">
-          <label>
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <label className="w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
               First Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -99,11 +100,11 @@ function SignupForm() {
               value={firstName}
               onChange={handleOnChange}
               placeholder="Enter first name"
-              className="form-style w-full"
+              className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black"
             />
           </label>
-          <label>
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <label className="w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
               Last Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -113,12 +114,12 @@ function SignupForm() {
               value={lastName}
               onChange={handleOnChange}
               placeholder="Enter last name"
-              className="form-style w-full"
+              className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black"
             />
           </label>
         </div>
         <label className="w-full">
-          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
             Email Address <sup className="text-pink-200">*</sup>
           </p>
           <input
@@ -128,12 +129,12 @@ function SignupForm() {
             value={email}
             onChange={handleOnChange}
             placeholder="Enter email address"
-            className="form-style w-full"
+            className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black"
           />
         </label>
         <div className="flex gap-x-4">
-          <label className="relative">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <label className="relative w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
               Create Password <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -143,21 +144,21 @@ function SignupForm() {
               value={password}
               onChange={handleOnChange}
               placeholder="Enter Password"
-              className="form-style w-full !pr-10"
+              className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black !pr-10"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute right-3 top-[38px] z-[10] cursor-pointer"
             >
               {showPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEyeInvisible fontSize={24} fill="#000" />
               ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEye fontSize={24} fill="#000" />
               )}
             </span>
           </label>
-          <label className="relative">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <label className="relative w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-black">
               Confirm Password <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -167,23 +168,23 @@ function SignupForm() {
               value={confirmPassword}
               onChange={handleOnChange}
               placeholder="Confirm Password"
-              className="form-style w-full !pr-10"
+              className="w-full py-3 px-4 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black !pr-10"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
               className="absolute right-3 top-[38px] z-[10] cursor-pointer"
             >
               {showConfirmPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEyeInvisible fontSize={24} fill="#000" />
               ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                <AiOutlineEye fontSize={24} fill="#000" />
               )}
             </span>
           </label>
         </div>
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+          className="mt-6 py-3 px-6 text-white bg-black border-2 border-black rounded-md font-semibold hover:bg-white hover:text-black hover:border-black transition"
         >
           Create Account
         </button>
