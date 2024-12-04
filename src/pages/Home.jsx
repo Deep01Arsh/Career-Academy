@@ -140,10 +140,6 @@ function Home() {
 
         <InstructorSection />
 
-        {/* <h1 className="text-center text-3xl font-semibold mt-8">
-          What Our Learners Are Saying
-        </h1>
-        <ReviewSlider /> */}
       </div>
 
       <Footer />
