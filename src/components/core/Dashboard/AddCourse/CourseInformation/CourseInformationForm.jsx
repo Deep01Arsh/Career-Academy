@@ -160,7 +160,6 @@ export default function CourseInformationForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6"
     >
-      {/* Course Title */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseTitle">
           Course Title <sup className="text-pink-200">*</sup>
@@ -177,7 +176,6 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
-      {/* Course Short Description */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseShortDesc">
           Course Short Description <sup className="text-pink-200">*</sup>
@@ -194,7 +192,6 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
-      {/* Course Price */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="coursePrice">
           Course Price <sup className="text-pink-200">*</sup>
@@ -220,7 +217,6 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
-      {/* Course Category */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseCategory">
           Course Category <sup className="text-pink-200">*</sup>
@@ -247,7 +243,6 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
-      {/* Course Tags */}
       <ChipInput
         label="Tags"
         name="courseTags"
@@ -257,7 +252,6 @@ export default function CourseInformationForm() {
         setValue={setValue}
         getValues={getValues}
       />
-      {/* Course Thumbnail Image */}
       <Upload
         name="courseImage"
         label="Course Thumbnail"
@@ -266,7 +260,6 @@ export default function CourseInformationForm() {
         errors={errors}
         editData={editCourse ? course?.thumbnail : null}
       />
-      {/* Benefits of the course */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
           Benefits of the course <sup className="text-pink-200">*</sup>
@@ -283,7 +276,6 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
-      {/* Requirements/Instructions */}
       <RequirementsField
         name="courseRequirements"
         label="Requirements/Instructions"
@@ -292,7 +284,6 @@ export default function CourseInformationForm() {
         errors={errors}
         getValues={getValues}
       />
-      {/* Next Button */}
       <div className="flex justify-end gap-x-2">
         {editCourse && (
           <button

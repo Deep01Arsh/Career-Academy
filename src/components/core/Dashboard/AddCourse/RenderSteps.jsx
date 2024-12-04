@@ -35,12 +35,12 @@ export default function RenderSteps() {
               <button
                 className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
                   step === item.id
-                    ? "border-yellow-50 bg-yellow-900 text-yellow-50"
-                    : "border-richblack-700 bg-richblack-800 text-richblack-300"
+                    ? "border-blue-50 bg-blue-900 text-blue-50"
+                    : "border-richblack-700 bg-richblack-800 text-blue-50"
                 } ${step > item.id && "bg-yellow-50 text-yellow-50"}} `}
               >
                 {step > item.id ? (
-                  <FaCheck className="font-bold text-richblack-900" />
+                  <FaCheck className="font-bold text-blue-50" />
                 ) : (
                   item.id
                 )}
@@ -70,7 +70,7 @@ export default function RenderSteps() {
               
               <p
                 className={`text-sm ${
-                  step >= item.id ? "text-richblack-5" : "text-richblack-500"
+                  step >= item.id ? "text-blue-50" : "text-richblack-500"
                 }`}
               >
                 {item.title}
@@ -80,7 +80,6 @@ export default function RenderSteps() {
           </>
         ))}
       </div>
-      {/* Render specific component based on current step */}
       {step === 1 && <CourseInformationForm />}
       {step === 2 && <CourseBuilderForm />}
       {step === 3 && <PublishCourse />}

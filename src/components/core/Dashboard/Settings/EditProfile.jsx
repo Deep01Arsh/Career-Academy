@@ -37,7 +37,7 @@ export default function EditProfile() {
           </h2>
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="firstName" className="lable-style text-black">
+              <label htmlFor="firstName" className=" text-black">
                 First Name
               </label>
               <input
@@ -56,7 +56,7 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="lastName" className="lable-style text-black">
+              <label htmlFor="lastName" className="text-black">
                 Last Name
               </label>
               <input
@@ -78,7 +78,7 @@ export default function EditProfile() {
 
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="dateOfBirth" className="lable-style text-black">
+              <label htmlFor="dateOfBirth" className="text-black">
                 Date of Birth
               </label>
               <input
@@ -105,7 +105,7 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="gender" className="lable-style text-black">
+              <label htmlFor="gender" className="text-black">
                 Gender
               </label>
               <select
@@ -131,7 +131,7 @@ export default function EditProfile() {
 
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="contactNumber" className="lable-style text-black">
+              <label htmlFor="contactNumber" className="text-black">
                 Contact Number
               </label>
               <input
@@ -157,7 +157,7 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="about" className="lable-style text-black">
+              <label htmlFor="about" className=" text-black">
                 About
               </label>
               <input
