@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-import CountryCode from "../../../data/countrycode.json"
-import { apiConnector } from "../../../services/apiConnector"
-import { contactusEndpoint } from "../../../services/apis"
+import CountryCode from "../../../data/countrycode.json";
+import { apiConnector } from "../../../services/apiConnector";
+import { contactusEndpoint } from "../../../services/apis";
 
 const ContactUsForm = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
-  } = useForm()
+  } = useForm();
 
   const submitContactForm = async (data) => {
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await apiConnector(
         "POST",
         contactusEndpoint.CONTACT_US_API,
         data
-      )
-      setLoading(false)
+      );
+      setLoading(false);
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
-      setLoading(false)
+      console.log("ERROR MESSAGE - ", error.message);
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -37,145 +37,138 @@ const ContactUsForm = () => {
         lastname: "",
         message: "",
         phoneNo: "",
-      })
+      });
     }
-  }, [reset, isSubmitSuccessful])
+  }, [reset, isSubmitSuccessful]);
 
   return (
     <form
-      className="flex flex-col gap-7 bg-white text-black p-6 rounded-md shadow-md"
+      className="flex flex-col gap-8 bg-gradient-to-br from-blue-300 to-pure-greys-700 text-black p-8 rounded-xl shadow-2xl max-w-3xl mx-auto object-cover transition-all duration-300 hover:scale-105 hover:shadow-lg"
       onSubmit={handleSubmit(submitContactForm)}
     >
+      <h2 className="text-2xl font-bold text-4xl text-center text-white">
+        Get in Touch
+      </h2>
+      <p className="text-s text-center text-white">
+        We’d love to hear from you! Please fill out the form below.
+      </p>
+
       <div className="flex flex-col gap-5 lg:flex-row">
         <div className="flex flex-col gap-2 lg:w-[48%]">
-          <label htmlFor="firstname" className="text-sm font-semibold text-black">
+          <label htmlFor="firstname" className="text-sm font-semibold text-white">
             First Name
           </label>
           <input
             type="text"
             name="firstname"
             id="firstname"
-            placeholder="Enter first name"
-            className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            placeholder="Enter your first name"
+            className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             {...register("firstname", { required: true })}
           />
           {errors.firstname && (
-            <span className="-mt-1 text-xs text-red-500">
-              Please enter your name.
+            <span className="text-xs text-red-500">
+              Please enter your first name.
             </span>
           )}
         </div>
         <div className="flex flex-col gap-2 lg:w-[48%]">
-          <label htmlFor="lastname" className="text-sm font-semibold text-black">
+          <label htmlFor="lastname" className="text-sm font-semibold text-white">
             Last Name
           </label>
           <input
             type="text"
             name="lastname"
             id="lastname"
-            placeholder="Enter last name"
-            className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            placeholder="Enter your last name"
+            className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             {...register("lastname")}
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="text-sm font-semibold text-black">
+        <label htmlFor="email" className="text-sm font-semibold text-white">
           Email Address
         </label>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="Enter email address"
-          className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+          placeholder="Enter your email address"
+          className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           {...register("email", { required: true })}
         />
         {errors.email && (
-          <span className="-mt-1 text-xs text-red-500">
-            Please enter your Email address.
-          </span>
+          <span className="text-xs text-red-500">Please enter your email address.</span>
         )}
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="phonenumber" className="text-sm font-semibold text-black">
+        <label htmlFor="phonenumber" className="text-sm font-semibold text-white">
           Phone Number
         </label>
-
-        <div className="flex gap-5">
-          <div className="flex w-[81px] flex-col gap-2">
-            <select
-              name="countrycode"
-              id="countrycode"
-              className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-              {...register("countrycode", { required: true })}
-            >
-              {CountryCode.map((ele, i) => {
-                return (
-                  <option key={i} value={ele.code}>
-                    {ele.code} - {ele.country}
-                  </option>
-                )
-              })}
-            </select>
-          </div>
-          <div className="flex w-[calc(100%-90px)] flex-col gap-2">
-            <input
-              type="number"
-              name="phonenumber"
-              id="phonenumber"
-              placeholder="12345 67890"
-              className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-              {...register("phoneNo", {
-                required: {
-                  value: true,
-                  message: "Please enter your Phone Number.",
-                },
-                maxLength: { value: 12, message: "Invalid Phone Number" },
-                minLength: { value: 10, message: "Invalid Phone Number" },
-              })}
-            />
-          </div>
+        <div className="flex gap-4">
+          <select
+            name="countrycode"
+            id="countrycode"
+            className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            {...register("countrycode", { required: true })}
+          >
+            {CountryCode.map((ele, i) => (
+              <option key={i} value={ele.code}>
+                {ele.code} - {ele.country}
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            name="phonenumber"
+            id="phonenumber"
+            placeholder="12345 67890"
+            className="flex-grow bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            {...register("phoneNo", {
+              required: {
+                value: true,
+                message: "Please enter your phone number.",
+              },
+              maxLength: { value: 12, message: "Invalid phone number." },
+              minLength: { value: 10, message: "Invalid phone number." },
+            })}
+          />
         </div>
         {errors.phoneNo && (
-          <span className="-mt-1 text-xs text-red-500">
-            {errors.phoneNo.message}
-          </span>
+          <span className="text-xs text-red-500">{errors.phoneNo.message}</span>
         )}
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-sm font-semibold text-black">
+        <label htmlFor="message" className="text-sm font-semibold text-white">
           Message
         </label>
         <textarea
           name="message"
           id="message"
-          cols="30"
-          rows="7"
-          placeholder="Enter your message here"
-          className="bg-white border border-black text-black px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+          rows="6"
+          placeholder="Write your message here..."
+          className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           {...register("message", { required: true })}
         />
         {errors.message && (
-          <span className="-mt-1 text-xs text-red-500">
-            Please enter your Message.
-          </span>
+          <span className="text-xs text-red-500">Please enter your message.</span>
         )}
       </div>
 
       <button
         disabled={loading}
         type="submit"
-        className={`bg-black text-white py-3 px-6 rounded-md font-bold text-sm shadow-lg transition-all duration-200 
-          ${!loading && "hover:bg-gray-700 hover:scale-95"} disabled:bg-gray-500`}
+        className={`bg-blue-600 text-white py-3 px-6 rounded-lg font-bold text-sm shadow-lg transition-transform duration-200 
+          ${!loading && "hover:bg-blue-700 hover:scale-95"} disabled:bg-gray-400`}
       >
         {loading ? "Sending..." : "Send Message"}
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default ContactUsForm
+export default ContactUsForm;

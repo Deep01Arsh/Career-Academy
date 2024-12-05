@@ -4,32 +4,26 @@ import React from "react";
 import { HiUsers } from "react-icons/hi";
 import { ImTree } from "react-icons/im";
 
-const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
+const CourseCard = ({ cardData }) => {
   return (
     <div
-      className={`w-[360px] lg:w-[30%] ${
-        currentCard === cardData?.heading
-          ? "bg-white shadow-[12px_12px_12px_12px] shadow-blue-25"
-          : "bg-richblack-800"
-      }  text-richblack-25 h-[300px] box-border cursor-pointer`}
-      onClick={() => setCurrentCard(cardData?.heading)}
-    >
-      <div className="border-b-[2px] border-richblack-400 border-dashed h-[80%] p-6 flex flex-col gap-3">
-        <div
-          className={` ${
-            currentCard === cardData?.heading && "text-richblack-800"
-          } font-semibold text-[20px]`}
-        >
-          {cardData?.heading}
-        </div>
+    className={`w-[360px] lg:w-[30%] h-[300px] box-border cursor-pointer rounded-lg transition-all duration-300
+      bg-blue-400 text-white shadow-lg transform hover:bg-richblack-5 hover:text-black hover:shadow-2xl hover:scale-105 hover:-translate-y-2 `}
 
-        <div className="text-richblack-400">{cardData?.description}</div>
+    >
+      {/* Card Content */}
+      <div
+        className={`border-b-[2px] border-dashed h-[80%] p-6 flex flex-col gap-3 rounded-t-lg border-richblack-400`}
+      >
+        {/* Card Heading */}
+        <div className={`font-semibold text-[20px]`}>{cardData?.heading}</div>
+        {/* Card Description */}
+        <div className="text-[14px]">{cardData?.description}</div>
       </div>
 
+      {/* Card Footer */}
       <div
-        className={`flex justify-between ${
-          currentCard === cardData?.heading ? "text-blue-300" : "text-richblack-300"
-        } px-6 py-3 font-medium`}
+        className={`flex justify-between px-6 py-3 font-medium rounded-b-lg border-t-[2px] border-richblack-400`}
       >
         {/* Level */}
         <div className="flex items-center gap-2 text-[16px]">
@@ -40,7 +34,7 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
         {/* Flow Chart */}
         <div className="flex items-center gap-2 text-[16px]">
           <ImTree />
-          <p>{cardData?.lessionNumber} Lession</p>
+          <p>{cardData?.lessionNumber} Lessons</p>
         </div>
       </div>
     </div>

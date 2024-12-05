@@ -42,11 +42,11 @@ function Home() {
           </CTAButton>
         </div>
 
-        <div className="mt-16 w-full">
+        <div className="mt-16 w-full px-3  shadow-[0_0_20px_0] shadow-[#655e5e] rounded-lg object-cover transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <CodeBlocks
             position={"lg:flex-row"}
             heading={
-              <div className="text-3xl font-semibold">
+              <div className="text-3xl font-semibold ">
                 Unlock Your
                 <HighlightText text={"Coding Skills"} /> with Our Interactive Courses
               </div>
@@ -70,7 +70,7 @@ function Home() {
           />
         </div>
 
-        <div className="mt-16 w-full">
+        <div className="mt-16 w-full px-3 shadow-[0_0_20px_0] shadow-[#655e5e] rounded-lg object-cover transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <CodeBlocks
             position={"lg:flex-row-reverse"}
             heading={
