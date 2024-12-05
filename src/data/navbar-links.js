@@ -15,4 +15,8 @@ export const NavbarLinks = [
     title: "Contact Us",
     path: "/contact",
   },
+  {
+    title: "Career Labs",
+    path: "https://career-academy-compiler.vercel.app/",
+  },
 ];
