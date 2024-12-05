@@ -40,10 +40,10 @@ export default function Instructor() {
   return (
     <div>
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-richblack-5">
+        <h1 className="text-3xl font-bold text-black">
           Hi {user?.firstName} 👋
         </h1>
-        <p className="font-medium text-richblack-200">
+        <p className="font-medium text-black">
           Let's start something new
         </p>
       </div>

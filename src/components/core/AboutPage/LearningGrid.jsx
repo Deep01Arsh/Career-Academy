@@ -5,83 +5,82 @@ import CTAButton from "../../../components/core/HomePage/Button";
 const LearningGridArray = [
   {
     order: -1,
-    heading: "World-Class Learning for",
-    highliteText: "Anyone, Anywhere",
+    heading: "Empower Your Learning with",
+    highliteText: "CareerAcademy",
     description:
-      "CareerAcademy partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
-    BtnText: "Learn More",
-    BtnLink: "/",
+      "Join a global community of learners. With partnerships from 275+ universities and companies, CareerAcademy ensures a seamless learning experience tailored for success.",
+    BtnText: "Explore Courses",
+    BtnLink: "/courses",
   },
   {
     order: 1,
-    heading: "Curriculum Based on Industry Needs",
+    heading: "Cutting-Edge Curriculum",
     description:
-      "Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.",
+      "Dive into industry-relevant courses designed to make you future-ready. Stay ahead with content curated by top educators and industry leaders.",
   },
   {
     order: 2,
-    heading: "Our Learning Methods",
+    heading: "Innovative Learning Techniques",
     description:
-      "CareerAcademy partners with more than 275+ leading universities and companies to bring",
+      "Experience interactive lessons, practical projects, and immersive tools that bring real-world scenarios into your learning journey.",
   },
   {
     order: 3,
-    heading: "Certification",
+    heading: "Industry-Recognized Certification",
     description:
-      "CareerAcademy partners with more than 275+ leading universities and companies to bring",
+      "Earn certifications that showcase your expertise. Stand out in your career with globally acknowledged credentials.",
   },
   {
     order: 4,
-    heading: `Rating "Auto-grading"`,
+    heading: "Performance Feedback & Insights",
     description:
-      "CareerAcademy partners with more than 275+ leading universities and companies to bring",
+      "Receive instant, personalized feedback on your progress. Learn smarter with auto-grading and detailed analytics.",
   },
   {
     order: 5,
-    heading: "Ready to Work",
+    heading: "Career-Ready Skills",
     description:
-      "CareerAcademy partners with more than 275+ leading universities and companies to bring",
+      "Equip yourself with the skills and confidence to succeed in the workplace. From technical knowledge to soft skills, we’ve got you covered.",
   },
 ];
 
 const LearningGrid = () => {
   return (
-    <div className="grid mx-auto w-[350px] xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
+    <div className="grid mx-auto w-[350px] xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12 gap-4">
       {LearningGridArray.map((card, i) => {
         return (
           <div
             key={i}
-            className={`${i === 0 && "xl:col-span-2 xl:h-[294px]"}  ${
-              card.order % 2 === 1
-                ? "bg-richblack-700 h-[294px]"
-                : card.order % 2 === 0
-                ? "bg-richblack-800 h-[294px]"
+            className={`${i === 0 && "xl:col-span-2 xl:h-[320px]"} ${
+              card.order % 2=== 1
+                ? "bg-gradient-to-br from-richblue-100 to-pure-greys-50 h-[320px]"
+                : card.order % 1 === 0
+                ? "bg-gradient-to-br from-blue-50 to-blue-500 h-[320px]"
                 : "bg-transparent"
-            } ${card.order === 3 && "xl:col-start-2"}  `}
+            } ${
+              card.order === 3 && "xl:col-start-2"
+            } rounded-lg shadow-lg transition-transform hover:scale-105`}
           >
             {card.order < 0 ? (
-              <div className="xl:w-[90%] flex flex-col gap-3 pb-10 xl:pb-0">
-                <div className="text-4xl font-semibold ">
-                  {card.heading}
+              <div className="xl:w-[90%] flex flex-col gap-3 p-6 text-black">
+                <div className="text-4xl font-semibold">
+                  {card.heading}{" "}
                   <HighlightText text={card.highliteText} />
                 </div>
-                <p className="text-richblack-300 font-medium">
+                <p className="text-gray-200 font-medium">
                   {card.description}
                 </p>
 
-                <div className="w-fit mt-2">
+                <div className="w-fit mt-4">
                   <CTAButton active={true} linkto={card.BtnLink}>
                     {card.BtnText}
                   </CTAButton>
                 </div>
               </div>
             ) : (
-              <div className="p-8 flex flex-col gap-8">
-                <h1 className="text-richblack-5 text-lg">{card.heading}</h1>
-
-                <p className="text-richblack-300 font-medium">
-                  {card.description}
-                </p>
+              <div className="p-8 flex flex-col gap-6 text-black">
+                <h1 className="text-xl font-bold">{card.heading}</h1>
+                <p className="text-gray-200 font-medium">{card.description}</p>
               </div>
             )}
           </div>

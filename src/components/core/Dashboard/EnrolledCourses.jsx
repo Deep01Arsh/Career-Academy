@@ -1,100 +1,114 @@
-import { useEffect, useState } from "react"
-import ProgressBar from "@ramonak/react-progress-bar"
-import { BiDotsVerticalRounded } from "react-icons/bi"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+import ProgressBar from "@ramonak/react-progress-bar";
+import { BiDotsVerticalRounded } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { getUserEnrolledCourses } from "../../../services/operations/profileAPI"
+import { getUserEnrolledCourses } from "../../../services/operations/profileAPI";
 
 export default function EnrolledCourses() {
-  const { token } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
+  const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
-  const [enrolledCourses, setEnrolledCourses] = useState(null)
+  const [enrolledCourses, setEnrolledCourses] = useState(null);
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       try {
-        const res = await getUserEnrolledCourses(token) // Getting all the published and the drafted courses
-
-        // Filtering the published course out
-        const filterPublishCourse = res.filter((ele) => ele.status !== "Draft")
-        // console.log(
-        //   "Viewing all the couse that is Published",
-        //   filterPublishCourse
-        // )
-
-        setEnrolledCourses(filterPublishCourse)
+        const res = await getUserEnrolledCourses(token);
+        const publishedCourses = res.filter((course) => course.status !== "Draft");
+        setEnrolledCourses(publishedCourses);
       } catch (error) {
-        console.log("Could not fetch enrolled courses.")
+        console.error("Could not fetch enrolled courses.", error);
       }
-    })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    })();
+  }, [token]);
 
   return (
-    <>
-      <div className="text-3xl text-richblack-50">Enrolled Courses</div>
+    <div className="container mx-auto px-6 py-8">
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text ">
+        Enrolled Courses
+      </h1>
       {!enrolledCourses ? (
-        <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-          <div className="spinner"></div>
+        <div className="flex h-[50vh] items-center justify-center">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-purple-500 border-t-transparent"></div>
         </div>
       ) : !enrolledCourses.length ? (
-        <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
-          You have not enrolled in any course yet.
-          {/* TODO: Modify this Empty State */}
-        </p>
+        <div className="flex h-[50vh] flex-col items-center justify-center text-center">
+          <p className="text-lg font-medium text-gray-400">
+            You haven’t enrolled in any course yet.
+          </p>
+          <button
+            onClick={() => navigate("/courses")}
+            className="mt-6 rounded-md bg-purple-500 px-6 py-3 text-white shadow-lg transition duration-300 hover:bg-purple-600 hover:shadow-2xl"
+          >
+            Explore Courses
+          </button>
+        </div>
       ) : (
-        <div className="my-8 text-richblack-5">
-          {/* Headings */}
-          <div className="flex rounded-t-lg bg-richblack-500 ">
-            <p className="w-[45%] px-5 py-3">Course Name</p>
-            <p className="w-1/4 px-2 py-3">Duration</p>
-            <p className="flex-1 px-2 py-3">Progress</p>
+        <div className="mt-8 rounded-lg bg-gray-100 shadow-md">
+          {/* Table Header */}
+          <div className="flex items-center rounded-t-lg bg-indigo-500 text-white">
+            <p className="w-[45%] px-5 py-3 text-lg font-semibold">Course Name</p>
+            <p className="w-1/4 px-2 py-3 text-lg font-semibold">Duration</p>
+            <p className="flex-1 px-2 py-3 text-lg font-semibold">Progress</p>
           </div>
-          {/* Course Names */}
-          {enrolledCourses.map((course, i, arr) => (
+          {/* Course List */}
+          {enrolledCourses.map((course, index) => (
             <div
-              className={`flex items-center border border-richblack-700 ${
-                i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"
-              }`}
-              key={i}
+              className={`flex items-center border-b border-gray-300 last:border-none ${
+                index % 2 === 0 ? "bg-gray-50" : "bg-white"
+              } hover:bg-gray-100 transition`}
+              key={course._id}
             >
+              {/* Course Details */}
               <div
                 className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
-                onClick={() => {
+                onClick={() =>
                   navigate(
-                    `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSection?.[0]?._id}`
+                    `/view-course/${course._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSection?.[0]?._id}`
                   )
-                }}
+                }
               >
                 <img
                   src={course.thumbnail}
-                  alt="course_img"
-                  className="h-14 w-14 rounded-lg object-cover"
+                  alt={course.courseName}
+                  className="h-14 w-14 rounded-lg object-cover shadow"
                 />
-                <div className="flex max-w-xs flex-col gap-2">
-                  <p className="font-semibold">{course.courseName}</p>
-                  <p className="text-xs text-richblack-300">
+                <div className="flex flex-col">
+                  <p className="font-semibold text-gray-800">{course.courseName}</p>
+                  <p className="text-sm text-gray-500">
                     {course.courseDescription.length > 50
                       ? `${course.courseDescription.slice(0, 50)}...`
                       : course.courseDescription}
                   </p>
                 </div>
               </div>
-              <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
-              <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
-                <p>Progress: {course.progressPercentage || 0}%</p>
+              {/* Course Duration */}
+              <div className="w-1/4 px-2 py-3 text-center text-gray-600">
+                {course.totalDuration || "N/A"}
+              </div>
+              {/* Course Progress */}
+              <div className="flex w-1/4 flex-col gap-2 px-2 py-3">
+                <p className="text-sm text-gray-600">
+                  Progress: <span className="font-medium">{course.progressPercentage || 0}%</span>
+                </p>
                 <ProgressBar
                   completed={course.progressPercentage || 0}
                   height="8px"
+                  baseBgColor="#e5e7eb"
+                  bgColor="#4f46e5"
                   isLabelVisible={false}
                 />
+              </div>
+              {/* Options Icon */}
+              <div className="px-4 text-gray-400 hover:text-gray-600">
+                <BiDotsVerticalRounded size={24} />
               </div>
             </div>
           ))}
         </div>
       )}
-    </>
-  )
+    </div>
+  );
 }

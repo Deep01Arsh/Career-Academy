@@ -55,7 +55,7 @@ const TimelineSection = () => {
             );
           })}
         </div>
-        <div className="relative w-fit h-fit shadow-blue-200 shadow-[0px_0px_30px_0px]">
+        <div className="relative w-fit h-fit  shadow-[0_0_20px_0] shadow-[#655e5e] rounded-lg object-cover transition-all duration-300 hover:scale-105 hover:shadow-lg">
           <div className="absolute lg:left-[50%] lg:bottom-0 lg:translate-x-[-50%] lg:translate-y-[50%] bg-richblue-500 flex lg:flex-row flex-col text-white uppercase py-5 gap-4 lg:gap-0 lg:py-10 ">
             {/* Section 1 */}
             <div className="flex gap-5 items-center lg:border-r border-blue-25 text-blue-25 px-7 lg:px-14">
@@ -77,7 +77,7 @@ const TimelineSection = () => {
           <img
             src={TimeLineImage}
             alt="timelineImage"
-            className="shadow-white shadow-[20px_20px_0px_0px] object-cover h-[400px] lg:h-fit"
+            className="shadow-white shadow-[20px_20px_0px_0px] object-cover h-[400px] lg:h-fit "
           />
         </div>
       </div>
