@@ -63,7 +63,7 @@ function Catalog() {
         <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
           <p className="text-sm text-richblack-300">
             {`Home / Catalog / `}
-            <span className="text-yellow-25">
+            <span className="text-blue-50">
               {catalogPageData?.data?.selectedCategory?.name}
             </span>
           </p>
@@ -78,13 +78,13 @@ function Catalog() {
 
       {/* Section 1 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">Courses to get you started</div>
+        <div className="text-4xl font-bold text-richblack-900">Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           <p
             className={`px-4 py-2 ${
               active === 1
-                ? "border-b border-b-yellow-25 text-yellow-25"
-                : "text-richblack-50"
+                ? "border-b border-b-blue-50-25 text-blue-100"
+                : "text-richblack-900"
             } cursor-pointer`}
             onClick={() => setActive(1)}
           >
@@ -93,8 +93,8 @@ function Catalog() {
           <p
             className={`px-4 py-2 ${
               active === 2
-                ? "border-b border-b-yellow-25 text-yellow-25"
-                : "text-richblack-50"
+              ? "border-b border-b-blue-50-25 text-blue-100"
+                : "text-richblack-900"
             } cursor-pointer`}
             onClick={() => setActive(2)}
           >
@@ -109,7 +109,7 @@ function Catalog() {
       </div>
       {/* Section 2 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">
+        <div className="text-3xl text-richblack-900 font-bold">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
         </div>
         <div className="py-8">
@@ -119,9 +119,8 @@ function Catalog() {
         </div>
       </div>
 
-      {/* Section 3 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">Frequently Bought</div>
+        <div className="text-3xl font-black text-richblack-900">Frequently Bought</div>
         <div className="py-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {catalogPageData?.data?.mostSellingCourses
