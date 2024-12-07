@@ -53,7 +53,7 @@ export default function Cart() {
           </p>
           {/* Browse Courses Button */}
           <button
-            onClick={() => (window.location.href = "/courses")}
+            onClick={() => (window.location.href = "/catalog/web-development")}
             className="mt-6 rounded-lg bg-blue-500 px-6 py-3 text-white shadow-lg transition duration-300 hover:bg-blue-600 hover:shadow-2xl"
           >
             Browse Courses

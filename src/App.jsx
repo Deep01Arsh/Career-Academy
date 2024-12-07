@@ -34,6 +34,7 @@ import VerifyEmail from "./pages/VerifyEmail"
 import ViewCourse from "./pages/ViewCourse"
 import { getUserDetails } from "./services/operations/profileAPI"
 import { ACCOUNT_TYPE } from "./utils/constants"
+import DemoSchedule from "./pages/DemoSchedule"
 
 function App() {
   const dispatch = useDispatch()
@@ -57,6 +58,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route path="catalog/:catalogName" element={<Catalog />} />
+        <Route path="/demoscheduel" element={<DemoSchedule />} />
+
         {/* Open Route - for Only Non Logged in User */}
         <Route
           path="login"

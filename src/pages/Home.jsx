@@ -37,8 +37,8 @@ function Home() {
           <CTAButton active={true} linkto={"/signup"}>
             Start Learning Today
           </CTAButton>
-          <CTAButton active={false} linkto={"/login"}>
-            Schedule a Demo
+          <CTAButton active={false} linkto={"/demoscheduel"}>
+            See a Demo
           </CTAButton>
         </div>
 
@@ -104,15 +104,13 @@ function Home() {
       <div className="bg-gray-50 py-16 mt-[150px] text-black">
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8">
           <div className="flex flex-row gap-7 text-black">
-            <CTAButton active={true} linkto={"/signup"}>
+            <CTAButton active={true} linkto={"/catalog/web-development"}>
               <div className="flex items-center gap-2">
                 Discover Our Full Catalog
                 <FaArrowRight />
               </div>
             </CTAButton>
-            <CTAButton active={false} linkto={"/login"}>
-              Learn More
-            </CTAButton>
+           
           </div>
 
           <div className="flex flex-col lg:flex-row justify-between gap-8 mt-10">
