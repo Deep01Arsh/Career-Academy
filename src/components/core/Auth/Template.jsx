@@ -29,11 +29,11 @@ function Template({ title, description1, description2, image, formType }) {
           <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
             <img
               src={frameImg}
-              alt="Pattern"
+              
               width={558}
               height={504}
               loading="lazy"
-              className="opacity-30" // Subtle frame image for a clean look
+              className="opacity-0" // Subtle frame image for a clean look
             />
             <img
               src={image}

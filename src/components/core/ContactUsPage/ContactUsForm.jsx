@@ -105,42 +105,43 @@ const ContactUsForm = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="phonenumber" className="text-sm font-semibold text-white">
-          Phone Number
-        </label>
-        <div className="flex gap-4">
-          <select
-            name="countrycode"
-            id="countrycode"
-            className="bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            {...register("countrycode", { required: true })}
-          >
-            {CountryCode.map((ele, i) => (
-              <option key={i} value={ele.code}>
-                {ele.code} - {ele.country}
-              </option>
-            ))}
-          </select>
-          <input
-            type="number"
-            name="phonenumber"
-            id="phonenumber"
-            placeholder="12345 67890"
-            className="flex-grow bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            {...register("phoneNo", {
-              required: {
-                value: true,
-                message: "Please enter your phone number.",
-              },
-              maxLength: { value: 12, message: "Invalid phone number." },
-              minLength: { value: 10, message: "Invalid phone number." },
-            })}
-          />
-        </div>
-        {errors.phoneNo && (
-          <span className="text-xs text-red-500">{errors.phoneNo.message}</span>
-        )}
-      </div>
+  <label htmlFor="phonenumber" className="text-sm font-semibold text-white">
+    Phone Number
+  </label>
+  <div className="flex gap-4">
+    <select
+      name="countrycode"
+      id="countrycode"
+      className="w-2/4 bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      {...register("countrycode", { required: true })}
+    >
+      {CountryCode.map((ele, i) => (
+        <option key={i} value={ele.code}>
+          {ele.code} - {ele.country}
+        </option>
+      ))}
+    </select>
+    <input
+      type="number"
+      name="phonenumber"
+      id="phonenumber"
+      placeholder="Enter Number"
+      className="w-3/4 bg-white border border-blue-300 text-black px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+      {...register("phoneNo", {
+        required: {
+          value: true,
+          message: "Please enter your phone number.",
+        },
+        maxLength: { value: 12, message: "Invalid phone number." },
+        minLength: { value: 10, message: "Invalid phone number." },
+      })}
+    />
+  </div>
+  {errors.phoneNo && (
+    <span className="text-xs text-red-500">{errors.phoneNo.message}</span>
+  )}
+</div>
+
 
       <div className="flex flex-col gap-2">
         <label htmlFor="message" className="text-sm font-semibold text-white">
