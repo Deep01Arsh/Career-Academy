@@ -4,10 +4,8 @@ const SubSection = require("../models/Subsection")
 // CREATE a new section
 exports.createSection = async (req, res) => {
   try {
-    // Extract the required properties from the request body
     const { sectionName, courseId } = req.body
-
-    // Validate the input
+    
     if (!sectionName || !courseId) {
       return res.status(400).json({
         success: false,
@@ -15,10 +13,8 @@ exports.createSection = async (req, res) => {
       })
     }
 
-    // Create a new section with the given name
     const newSection = await Section.create({ sectionName })
 
-    // Add the new section to the course's content array
     const updatedCourse = await Course.findByIdAndUpdate(
       courseId,
       {

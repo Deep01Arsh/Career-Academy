@@ -1,3 +1,4 @@
+
 exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
   return `<!DOCTYPE html>
     <html>
@@ -67,7 +68,7 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
     
     <body>
         <div class="container">
-            <a href="https://career-academy.vercel.app/"><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
+            <a href="https://career-academy.vercel.app/"><img class="logo" src="https://firebasestorage.googleapis.com/v0/b/portfolio-34240.appspot.com/o/logo.jpg?alt=media&token=181067aa-39e3-4543-9ce2-58a31c0153db"
                     alt="CareerAcademy Logo"></a>
             <div class="message">Course Payment Confirmation</div>
             <div class="body">

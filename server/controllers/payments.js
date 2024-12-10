@@ -10,7 +10,6 @@ const {
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail")
 const CourseProgress = require("../models/CourseProgress")
 
-// Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
   const { courses } = req.body
   const userId = req.user.id
@@ -105,7 +104,6 @@ exports.verifyPayment = async (req, res) => {
   return res.status(200).json({ success: false, message: "Payment Failed" })
 }
 
-// Send Payment Success Email
 exports.sendPaymentSuccessEmail = async (req, res) => {
   const { orderId, paymentId, amount } = req.body
 
@@ -138,7 +136,6 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
   }
 }
 
-// enroll the student in the courses
 const enrollStudents = async (courses, userId, res) => {
   if (!courses || !userId) {
     return res
@@ -148,7 +145,6 @@ const enrollStudents = async (courses, userId, res) => {
 
   for (const courseId of courses) {
     try {
-      // Find the course and enroll the student in it
       const enrolledCourse = await Course.findOneAndUpdate(
         { _id: courseId },
         { $push: { studentsEnroled: userId } },

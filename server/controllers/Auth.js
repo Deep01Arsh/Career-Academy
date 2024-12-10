@@ -8,11 +8,8 @@ const { passwordUpdated } = require("../mail/templates/passwordUpdate")
 const Profile = require("../models/Profile")
 require("dotenv").config()
 
-// Signup Controller for Registering USers
-
 exports.signup = async (req, res) => {
   try {
-    // Destructure fields from the request body
     const {
       firstName,
       lastName,
@@ -23,7 +20,6 @@ exports.signup = async (req, res) => {
       contactNumber,
       otp,
     } = req.body
-    // Check if All Details are there or not
     if (
       !firstName ||
       !lastName ||
@@ -55,37 +51,33 @@ exports.signup = async (req, res) => {
       })
     }
 
-    // Find the most recent OTP for the email
     const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1)
     console.log(response)
     if (response.length === 0) {
-      // OTP not found for the email
       return res.status(400).json({
         success: false,
         message: "The OTP is not valid",
       })
     } else if (otp !== response[0].otp) {
-      // Invalid OTP
+    
       return res.status(400).json({
         success: false,
         message: "The OTP is not valid",
       })
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    // Create the user
     let approved = ""
     approved === "Instructor" ? (approved = false) : (approved = true)
 
-    // Create the Additional Profile For User
     const profileDetails = await Profile.create({
       gender: null,
       dateOfBirth: null,
       about: null,
       contactNumber: null,
     })
+
     const user = await User.create({
       firstName,
       lastName,
@@ -112,13 +104,11 @@ exports.signup = async (req, res) => {
   }
 }
 
-// Login controller for authenticating users
 exports.login = async (req, res) => {
   try {
-    // Get email and password from request body
+
     const { email, password } = req.body
 
-    // Check if email or password is missing
     if (!email || !password) {
       // Return 400 Bad Request status code with error message
       return res.status(400).json({
@@ -127,19 +117,15 @@ exports.login = async (req, res) => {
       })
     }
 
-    // Find user with provided email
     const user = await User.findOne({ email }).populate("additionalDetails")
 
-    // If user not found with provided email
     if (!user) {
-      // Return 401 Unauthorized status code with error message
       return res.status(401).json({
         success: false,
         message: `User is not Registered with Us Please SignUp to Continue`,
       })
     }
 
-    // Generate JWT token and Compare Password
     if (await bcrypt.compare(password, user.password)) {
       const token = jwt.sign(
         { email: user.email, id: user._id, role: user.role },
@@ -178,7 +164,6 @@ exports.login = async (req, res) => {
     })
   }
 }
-// Send OTP For Email Verification
 exports.sendotp = async (req, res) => {
   try {
     const { email } = req.body
@@ -202,6 +187,7 @@ exports.sendotp = async (req, res) => {
       lowerCaseAlphabets: false,
       specialChars: false,
     })
+
     const result = await OTP.findOne({ otp: otp })
     console.log("Result is Generate OTP Func")
     console.log("OTP", otp)
@@ -225,13 +211,11 @@ exports.sendotp = async (req, res) => {
   }
 }
 
-// Controller for Changing Password
 exports.changePassword = async (req, res) => {
   try {
     // Get user data from req.user
     const userDetails = await User.findById(req.user.id)
 
-    // Get old password, new password, and confirm new password from req.body
     const { oldPassword, newPassword } = req.body
 
     // Validate old password

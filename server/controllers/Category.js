@@ -51,7 +51,6 @@ exports.categoryPageDetails = async (req, res) => {
   try {
     const { categoryId } = req.body
 
-    // Get courses for the specified category
     const selectedCategory = await Category.findById(categoryId)
       .populate({
         path: "courses",

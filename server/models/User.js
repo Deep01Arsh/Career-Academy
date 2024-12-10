@@ -21,13 +21,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-
-    // Define the password field with type String and required
     password: {
       type: String,
       required: true,
     },
-    // Define the role field with type String and enum values of "Admin", "Student", or "Visitor"
     accountType: {
       type: String,
       enum: ["Admin", "Student", "Instructor"],
@@ -67,11 +64,8 @@ const userSchema = new mongoose.Schema(
         ref: "courseProgress",
       },
     ],
-
-    // Add timestamps for when the document is created and last modified
   },
   { timestamps: true }
 )
 
-// Export the Mongoose model for the user schema, using the name "user"
 module.exports = mongoose.model("user", userSchema)

@@ -194,8 +194,8 @@ function CourseDetails() {
         <div className="mx-auto max-w-maxContentTab lg:mx-0 xl:max-w-[810px]">
           {/* What will you learn section */}
           <div className="my-8 border border-richblack-600 p-8">
-            <p className="text-3xl font-semibold">What you'll learn</p>
-            <div className="mt-5">
+            <p className="text-3xl font-semibold text-black">What you'll learn</p>
+            <div className="mt-5 text-black">
               <ReactMarkdown>{whatYouWillLearn}</ReactMarkdown>
             </div>
           </div>
@@ -203,9 +203,9 @@ function CourseDetails() {
           {/* Course Content Section */}
           <div className="max-w-[830px] ">
             <div className="flex flex-col gap-3">
-              <p className="text-[28px] font-semibold">Course Content</p>
+              <p className="text-[28px] font-semibold text-black">Course Content</p>
               <div className="flex flex-wrap justify-between gap-2">
-                <div className="flex gap-2">
+                <div className="flex gap-2 text-black">
                   <span>
                     {courseContent.length} {`section(s)`}
                   </span>
@@ -239,7 +239,7 @@ function CourseDetails() {
 
             {/* Author Details */}
             <div className="mb-12 py-4">
-              <p className="text-[28px] font-semibold">Author</p>
+              <p className="text-[28px] font-semibold text-black">Author</p>
               <div className="flex items-center gap-4 py-4">
                 <img
                   src={
@@ -250,9 +250,9 @@ function CourseDetails() {
                   alt="Author"
                   className="h-14 w-14 rounded-full object-cover"
                 />
-                <p className="text-lg">{`${instructor?.firstName} ${instructor?.lastName}`}</p>
+                <p className="text-lg text-black">{`${instructor?.firstName} ${instructor?.lastName}`}</p>
               </div>
-              <p className="text-richblack-50">
+              <p className="text-black">
                 {instructor?.additionalDetails?.about}
               </p>
             </div>
