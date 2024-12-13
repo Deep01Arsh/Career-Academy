@@ -159,7 +159,7 @@ function Navbar() {
             className="p-4 text-xl text-black"
             onClick={toggleDrawer}
           >
-            ✕
+            ✕ 
           </button>
           <nav className="flex flex-col gap-y-4 p-6">
             {NavbarLinks.map((link, index) => (
