@@ -65,7 +65,7 @@ export default function CoursesTable({ courses, setCourses }) {
             courses?.map((course) => (
               <Tr
                 key={course._id}
-                className="group cursor-pointer transition-all duration-200 transform hover:bg-richblack-700 hover:scale-105 rounded-md "
+                className="group cursor-pointer transition-all duration-200 transform  hover:scale-105 rounded-md "
               >
                 <Td className="flex gap-x-6 px-6 py-6">
                   <img
@@ -74,10 +74,10 @@ export default function CoursesTable({ courses, setCourses }) {
                     className="h-[148px] w-[220px] rounded-lg object-cover transition-all duration-200 group-hover:opacity-80"
                   />
                   <div className="flex flex-col justify-between">
-                    <p className="text-xl font-bold text-black group-hover:text-yellow-100">
+                    <p className="text-xl font-bold text-black ">
                       {course.courseName}
                     </p>
-                    <p className="text-sm text-richblack-400 group-hover:text-yellow-200">
+                    <p className="text-sm text-richblack-400 ">
                       {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
                         ? course.courseDescription
                             .split(" ")
@@ -85,7 +85,7 @@ export default function CoursesTable({ courses, setCourses }) {
                             .join(" ") + "..."
                         : course.courseDescription}
                     </p>
-                    <p className="text-xs text-black group-hover:text-caribbeangreen-200 ">
+                    <p className="text-xs text-black ">
                       Created: {formatDate(course.createdAt)}
                     </p>
                     {course.status === COURSE_STATUS.DRAFT ? (
@@ -94,16 +94,16 @@ export default function CoursesTable({ courses, setCourses }) {
                         Drafted
                       </p>
                     ) : (
-                      <p className="flex items-center gap-2 rounded-full bg-green-500 px-4 py-1 text-black group-hover:text-caribbeangreen-200 text-xs font-semibold">
+                      <p className="flex items-center gap-2 rounded-full bg-green-500 px-4 py-1 text-black  text-xs font-semibold">
                         <FaCheck size={14} />
                         Published
                       </p>
                     )}
                   </div>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 px-6 py-6">2hr 30min</Td>
-                <Td className="text-sm font-medium text-richblack-100 px-6 py-6">₹{course.price}</Td>
-                <Td className="text-sm font-medium text-richblack-100 px-6 py-6 space-x-4">
+                <Td className="text-sm font-medium text-richblack-900 px-6 py-6">2hr 30min</Td>
+                <Td className="text-sm font-medium text-richblack-900 px-6 py-6">₹{course.price}</Td>
+                <Td className="text-sm font-medium text-richblack-900 px-6 py-6 space-x-4">
                   <button
                     disabled={loading}
                     onClick={() => navigate(`/dashboard/edit-course/${course._id}`)}

@@ -58,7 +58,6 @@ function Catalog() {
 
   return (
     <>
-      {/* Hero Section */}
       <div className=" box-content bg-richblack-800 px-4">
         <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
           <p className="text-sm text-richblack-300">
@@ -76,7 +75,6 @@ function Catalog() {
         </div>
       </div>
 
-      {/* Section 1 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
         <div className="text-4xl font-bold text-richblack-900">Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
@@ -107,7 +105,6 @@ function Catalog() {
           />
         </div>
       </div>
-      {/* Section 2 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
         <div className="text-3xl text-richblack-900 font-bold">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
